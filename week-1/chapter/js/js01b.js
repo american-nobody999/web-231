@@ -4,7 +4,8 @@
 
     Tinley Xeriscapes
     Author: Leslie Brockman
-    Date:   
+    Date:   08/16/2026
+    js is good, linked to html
 
     Filename: js01b.js
 */
