@@ -3,7 +3,7 @@
     Chapter case
 
     Tinley Xeriscapes
-    Author: 
+    Author: Leslie Brockman
     Date:   
 
     Filename: js01b.js
