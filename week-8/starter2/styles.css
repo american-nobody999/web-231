@@ -1,0 +1,317 @@
+/* ==================================================
+   TIMED PRACTICE QUIZ - STYLESHEET
+   ==================================================
+   Styles for a layout-responsive quiz application with:
+   - Sidebar (left) for setup and participant summary
+   - Main content area (right) for quiz and results
+   - Mobile-responsive design
+   - Timer display and countdown styling
+   ================================================== */
+
+/* Reset and base styles */
+* {
+  box-sizing: border-box; /* Include padding/border in element sizing */
+}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+  background: #f5f7fb; /* Light blue background */
+  color: #1f2937; /* Dark gray text */
+}
+/* Page header */
+header {
+  background: #1f3c88; /* Dark blue header */
+  color: #fff;
+  padding: 24px 16px;
+  text-align: center;
+}
+
+/* Main content container */
+main {
+  max-width: 1000px; /* Limit width on large screens */
+  margin: 0 auto;
+  padding: 24px 16px 40px;
+}
+/* Two-column layout: fixed-width sidebar + flexible main area */
+.app-grid {
+  display: grid;
+  grid-template-columns: 400px minmax(0, 1fr); /* Wider setup area, flexible quiz column */
+  gap: 20px;
+  align-items: start;
+}
+/* Group the timer, setup form, and summary within the sidebar */
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 0;
+  padding: 12px;
+  background: #eef4ff;
+  border: 1px solid #c8d8f2;
+  border-radius: 12px;
+}
+
+.sidebar .timer-box,
+.sidebar .setup-section,
+.sidebar .summary-section {
+  margin: 0;
+}
+
+/* Card-style section container */
+section {
+  background: #ffffff;
+  border: 1px solid #dbe2ea;
+  border-radius: 12px;
+  padding: 20px;
+  margin-bottom: 20px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04); /* Subtle shadow for depth */
+}
+/* Section headings */
+h2 {
+  margin-top: 0;
+  margin-bottom: 16px;
+  font-size: 1.35rem;
+  color: #1f3c88;
+}
+
+/* Pair the name fields and keep the other controls full width */
+#quizSetup {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px 12px;
+}
+
+.form-row {
+  min-width: 0;
+}
+
+.form-row:nth-child(n + 3),
+.error-box,
+.form-actions {
+  grid-column: 1 / -1;
+}
+
+.sidebar section {
+  padding: 16px;
+}
+
+.sidebar h2 {
+  margin-bottom: 10px;
+}
+
+.setup-section .section-note {
+  margin: 0 0 14px;
+}
+
+/* Form labels */
+label {
+  display: block;
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+/* Text inputs and selects */
+input[type="text"],
+input[type="email"],
+select {
+  width: 100%;
+  min-width: 0;
+  min-height: 38px;
+  padding: 8px 10px;
+  border: 1px solid #c7d2de;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-family: inherit;
+  color: inherit;
+  background: #fff;
+}
+
+/* Question input styling - narrower for answer boxes */
+.question-input input[type="text"] {
+  max-width: 88px; /* Short mathematical answers */
+  width: 100%;
+  padding: 8px 10px;
+  font-size: 1rem;
+}
+/* Button styling */
+button {
+  background: #1f3c88;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 10px 16px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+/* Button hover state */
+button:hover {
+  background: #17306f; /* Darker blue on hover */
+}
+/* Error message display */
+.error-box {
+  color: #b42318; /* Red text for errors */
+  font-weight: 600;
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* Empty validation messages should not separate the button from the form */
+.error-box:empty {
+  display: none;
+}
+
+/* Summary and results text */
+.summary-section p,
+.results-section p {
+  margin: 8px 0;
+}
+/* Quiz header with title and instructions */
+.quiz-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 20px;
+  margin-bottom: 18px;
+}
+
+/* Timer display box */
+.timer-box {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-width: 0;
+  padding: 10px 16px;
+  text-align: center;
+  border-radius: 12px;
+  background: linear-gradient(180deg, #eef4ff 0%, #e6f0ff 100%); /* Blue gradient background */
+  border: 1px solid #c8d8f2;
+  box-shadow: 0 4px 12px rgba(31, 60, 136, 0.08);
+}
+
+/* Timer display field */
+#quizClock {
+  width: 80px;
+  text-align: center;
+  font-size: 1.4rem;
+  font-weight: bold;
+  border: none;
+  background: transparent;
+  color: #1f3c88;
+}
+
+.timer-label {
+  margin: 0;
+  font-weight: 600;
+  color: #1f3c88;
+}
+
+.section-note {
+  line-height: 1.5;
+}
+
+.summary-grid {
+  overflow-wrap: anywhere;
+}
+
+/* Questions container */
+.questions-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px; /* Space between question rows */
+}
+
+/* One card per question, with consistent inner alignment */
+.question-row {
+  padding: 12px 14px;
+  border: 1px solid #e5e7eb;
+  border-radius: 10px;
+  background: #fafbfc;
+}
+
+.question-content {
+  display: flex;
+  align-items: flex-end;
+  gap: 16px;
+}
+
+.question-text label {
+  margin-bottom: 0;
+}
+
+/* Question text */
+.question-label,
+.question-prompt {
+  display: block;
+}
+
+.question-label {
+  margin-bottom: 6px;
+  font-size: 0.85rem;
+  color: #1f3c88;
+}
+
+.question-prompt {
+  font-size: 1.1rem;
+  line-height: 1.4;
+}
+
+.question-text {
+  flex: 1 1 auto; /* Expand to fill available space */
+  min-width: 0;
+  font-weight: 600;
+  color: #0f172a;
+}
+
+/* Question input area */
+.question-input {
+  flex: 0 0 88px;
+  display: flex;
+  align-items: center;
+}
+/* Styling for incorrect answers */
+.question-row input.wronganswer {
+  background: #fde8e8; /* Light red background */
+  border-color: #f5a5a5;
+  color: #991b1b; /* Dark red text */
+}
+
+/* Hidden class for toggling section visibility */
+.hidden {
+  display: none;
+} /* ==================================================
+   RESPONSIVE DESIGN - Mobile and Tablet
+   ================================================== */
+@media (max-width: 800px) {
+  /* Stack sidebar and quiz on top of each other */
+  .app-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Stack quiz header items vertically on mobile */
+  .quiz-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  /* Keep comfortable spacing within the narrower sidebar */
+  .sidebar {
+    padding: 12px;
+  }
+}
+
+/* Stack name fields on small phones without overflowing the sidebar */
+@media (max-width: 480px) {
+  #quizSetup {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .quiz-section {
+    padding: 16px;
+  }
+
+  .question-content {
+    gap: 12px;
+  }
+}
